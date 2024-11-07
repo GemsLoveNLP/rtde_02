@@ -75,7 +75,7 @@ def pickNplace(arm, gripper, x, y, x_target, y_target):
     # lift
     move(arm, [x_target, y_target, z_high, rx, ry, rz])
 
-    print(arm,gripper,x,y,x_target,y_target)
+    # print(arm,gripper,x,y,x_target,y_target)
     return True
 
 
@@ -93,15 +93,24 @@ def main():
     conn, addr = v.accept()
     print(f"Connected by: {addr}")
 
+    # check bad data
     data = conn.recv(1024)
     if not data:
         return False
     data = data.decode()
+
+    # check correct format
     if data[0] != "[" or data[-1] != "]":
         return False
+    
+    # extract data
     lst = data[1:-1].split(",")
+
+    # transform x,y to robot's base frame
     x = float(lst[0]) + x_offset
     y = float(lst[1]) + y_offset
+
+    # pick and place
     return pickNplace(a,g,x,y,x_target,y_target)
     
 
