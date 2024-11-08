@@ -1,4 +1,4 @@
-import socket, time
+import socket, time, math
 
 # UR test
 
@@ -20,7 +20,7 @@ print("Connected")
 #####################################################################################################################
 # Set default values
 rx = 0
-ry = -3.1415
+ry = -math.pi
 rz = 0
 z_high = 200/1000
 z_low = 10/1000

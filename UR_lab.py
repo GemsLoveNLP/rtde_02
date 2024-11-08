@@ -29,28 +29,28 @@ g.send(b'SET POS 0\n')
 
 def main():
         # move to pick up
-        # s.send(b'movel(p[-0.0227, -0.32491, 0.2, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
-        # time.sleep(2)
-        # # move down
-        # s.send(b'movel(p[-0.0227, -0.32491, 0, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
-        # time.sleep(4)
-        # # grip
-        # g.send(b'SET POS 255\n')
-        # time.sleep(2)
-        # # lift
-        # s.send(b'movel(p[0.0227, -0.32491, 0.2, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
-        # time.sleep(2)
-        # # move to target
-        # s.send(b'movel(p[0.0327, -0.32491, 0.2, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
-        # time.sleep(2)
-        # # down
-        # s.send(b'movel(p[0.0327, -0.32491, 0, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
-        # time.sleep(4)
-        # # ungrip
-        # g.send(b'SET POS 0\n')
-        # time.sleep(2)
-        # # return
-        # s.send(b'movel(p[0.0327, -0.32491, 0.2, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
+        s.send(b'movel(p[-0.0227, -0.32491, 0.2, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
+        time.sleep(2)
+        # move down
+        s.send(b'movel(p[-0.0227, -0.32491, 0, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
+        time.sleep(4)
+        # grip
+        g.send(b'SET POS 255\n')
+        time.sleep(2)
+        # lift
+        s.send(b'movel(p[0.0227, -0.32491, 0.2, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
+        time.sleep(2)
+        # move to target
+        s.send(b'movel(p[0.0327, -0.32491, 0.2, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
+        time.sleep(2)
+        # down
+        s.send(b'movel(p[0.0327, -0.32491, 0, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
+        time.sleep(4)
+        # ungrip
+        g.send(b'SET POS 0\n')
+        time.sleep(2)
+        # return
+        s.send(b'movel(p[0.0327, -0.32491, 0.2, 3.164, -0.052, -0.05], 1, 0.1, 0, 0)\n')
         # end
         return
 
