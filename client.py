@@ -4,11 +4,12 @@ import socket
 client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
 
 # Connect to the server
-client_socket.connect(("192.168.1.29", 3000))
+client_socket.connect(("localhost", 3000))
 
 while True:
     # Get user input
-    message = input("Enter message to send to the server: ")
+    # message = "[-240,-189]"
+    message = input()
     if message.lower() == 'exit':
         break
     # Send data to the server

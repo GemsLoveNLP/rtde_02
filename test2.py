@@ -1,26 +1,27 @@
-import socket, time
+import socket, time, math
 
 
 # define IP, port
 robot = '10.10.0.61'   # from robot
 arm_port = 30003
 gripper_port  = 63352
-host = socket.gethostbyname(socket.gethostname()) # or from vision
+# host = socket.gethostbyname(socket.gethostname()) # or from vision
+host = "localhost"
 vision_port = 3000 # from vision
 
 # define camera offset
-x_offset = 0.1
-y_offset = -0.1
+x_offset = 0
+y_offset = 0
 
 # coord
-x_target = 0.1
-y_target = 0.1
-x_home = -0.1
-y_home = -0.1
+x_target = -200/1000
+y_target = -350/1000
+x_home = 77/1000
+y_home = -300/1000
 z_high = 0.1
 z_low = 0.05
 rx = 0
-ry = 0
+ry = -math.pi
 rz = 0
 
 #####################################################################################################################
@@ -75,7 +76,7 @@ def pickNplace(arm, gripper, x, y, x_target, y_target):
     # lift
     move(arm, [x_target, y_target, z_high, rx, ry, rz])
 
-    print(arm,gripper,x,y,x_target,y_target)
+    print(x,y,x_target,y_target)
     return True
 
 
@@ -109,18 +110,16 @@ def main():
             lst = data[1:-1].split(",")
 
             # transform x,y to robot's base frame
-            x = float(lst[0]) + x_offset
-            y = float(lst[1]) + y_offset
+            x = float(lst[0])/1000 + x_offset
+            y = float(lst[1])/1000 + y_offset
 
             # pick and place
-            if pickNplace("a","g",x,y,x_target,y_target):
+            if pickNplace(a,g,x,y,x_target,y_target):
                 break
         conn.close()
         break
     return
-    
 
 
 if __name__ == '__main__': 
     main()
-
